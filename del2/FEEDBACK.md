@@ -15,7 +15,6 @@ rad 31-32 "stackPointer--;
            return data[stackPointer];"
            
 Det kollas inte ifall stackPointer är 0, samt att objektet inte tas bort ur stacken.
-stackPointer pekar hela tiden på platsen över det översta objektet, det gör koden lite svårare att läsa.
            
            
 rad 41-46 "public boolean contains(Object item){
