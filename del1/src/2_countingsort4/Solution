@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        HashMap<Integer, String> hm = new HashMap<Integer, String>();
+        int n = in.nextInt();
+        
+        for(int a0 = 0; a0 < n; a0++){
+            int x = in.nextInt();
+            
+            if(a0 < n/2){
+                String s = in.next();
+                if(hm.get(x) == null){
+                    hm.put(x, "- ");
+                } else {
+                hm.put(x,hm.get(x) + "- ");
+                }
+            } else {
+                String s = in.next();
+                if(hm.get(x) == null){
+                    hm.put(x,s + " ");
+                } else {
+                hm.put(x,hm.get(x) + s + " ");
+                }
+            }
+            
+        }
+        for(int k = 0; k < hm.size(); k++){
+            System.out.print(hm.get(k));
+        }
+        in.close();
+        
+    }
+}
