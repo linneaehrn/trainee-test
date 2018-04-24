@@ -1,41 +1,52 @@
 import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+
 
 public class Solution {
     
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        HashMap<Integer, String> hm = new HashMap<Integer, String>();
-        int n = in.nextInt();
+    public static void main(String[] args) throws IOException {
+        
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        HashMap<Integer, StringBuilder> hm = new HashMap<Integer, StringBuilder>();
+        StringBuilder num = new StringBuilder();
+        StringBuilder txt = new StringBuilder();
+        int n = Integer.valueOf(in.readLine());
         
         for(int a0 = 0; a0 < n; a0++){
-            int x = in.nextInt();
-            
+            String[] tmp = in.readLine().split(" ");
+            num.append(tmp[0] + " ");
             if(a0 < n/2){
-                String s = in.next();
-                if(hm.get(x) == null){
-                    hm.put(x, "- ");
-                } else {
-                hm.put(x,hm.get(x) + "- ");
-                }
+                txt.append("- ");
             } else {
-                String s = in.next();
-                if(hm.get(x) == null){
-                    hm.put(x,s + " ");
-                } else {
-                hm.put(x,hm.get(x) + s + " ");
-                }
+                txt.append(tmp[1] + " ");
             }
             
         }
-        for(int k = 0; k < hm.size(); k++){
-            System.out.print(hm.get(k));
+        
+        String[] tempnum = num.toString().split(" ");
+        String[] temptxt = txt.toString().split(" ");
+        
+        
+        StringBuilder temptxt2;
+        for(int i = 0; i < tempnum.length; i++){
+            if(hm.get(Integer.valueOf(tempnum[i])) == null){
+                temptxt2 = new StringBuilder(temptxt[i] + " ");
+                hm.put(Integer.valueOf(tempnum[i]), temptxt2);
+            } else {
+                temptxt2 = new StringBuilder(hm.get(Integer.valueOf(tempnum[i])).append(temptxt[i] + " "));
+                hm.put(Integer.valueOf(tempnum[i]), temptxt2);
+            }            
         }
-        in.close();
+        
+                      
+                      
+       StringBuilder done = new StringBuilder();               
+        for(int k = 0; k < hm.size(); k++){
+            done.append(hm.get(k));
+        }
+        System.out.print(done.toString());
+    
         
     }
 }
