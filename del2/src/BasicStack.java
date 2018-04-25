@@ -19,7 +19,7 @@ public class Stack<T> {
     Stack<T> push(T item){
         data.add(item);
         pointer++;
-        return data;
+        return this;
     }
     
     /**
@@ -82,7 +82,7 @@ public class Stack<T> {
             }
         }
         
-        throw new IllegalArgumentException(item + "could not be found on the stack");
+        throw new IllegalArgumentException(item + " could not be found on the stack");
     }
 
     /**
