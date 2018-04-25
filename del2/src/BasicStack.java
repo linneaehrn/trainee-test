@@ -17,7 +17,7 @@ public class Stack<T> {
      * @return Itself so that you can chain pushes.
      */
     Stack<T> push(T item){
-        data[pointer] = T;
+        data.add(item);
         pointer++;
         return data;
     }
@@ -29,7 +29,7 @@ public class Stack<T> {
     T pop(){
         if(pointer > 0){
             pointer--;
-            T temp = data[pointer];
+            T temp = data.get(pointer);
             data.remove(pointer);
             return temp;
         } else {
@@ -45,7 +45,7 @@ public class Stack<T> {
      */
     T peek(){
         if(pointer > 0){
-            return data[pointer-1];
+            return data.get(pointer-1);
         } else {
             System.out.println("There are no items on the stack");
             return null;
@@ -59,7 +59,7 @@ public class Stack<T> {
      */
     boolean contains(T item){
         for(int i = 0; i < pointer; i++){
-            if(data[i] == T){
+            if(data.get(i) == item){
                 return true;
             }
         }
@@ -74,12 +74,15 @@ public class Stack<T> {
      */
     T access(T item) throws IllegalArgumentException{
         while (pointer > 0){
-            if(T == data.pop()){
-                return T;
+            pointer--;
+            T temp = data.get(pointer);
+            data.remove(pointer);
+            if(temp == item){
+            return temp;
             }
         }
         
-        throw new IllegalArgumentException(T + "could not be found on the stack");
+        throw new IllegalArgumentException(item + "could not be found on the stack");
     }
 
     /**
@@ -90,3 +93,4 @@ public class Stack<T> {
         return (pointer == 0);
     }
 }
+
