@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+
+
+public class Solution {
+    
+
+    public static void main(String[] args) throws IOException {
+        
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        HashMap<Integer, StringBuilder> hm = new HashMap<Integer, StringBuilder>();
+        StringBuilder num = new StringBuilder();
+        StringBuilder txt = new StringBuilder();
+        int n = Integer.valueOf(in.readLine());
+        
+        for(int a0 = 0; a0 < n; a0++){
+            String[] tmp = in.readLine().split(" ");
+            num.append(tmp[0] + " ");
+            if(a0 < n/2){
+                txt.append("- ");
+            } else {
+                txt.append(tmp[1] + " ");
+            }
+            
+        }
+        
+        String[] tempnum = num.toString().split(" ");
+        String[] temptxt = txt.toString().split(" ");
+        
+        
+        StringBuilder temptxt2;
+        for(int i = 0; i < tempnum.length; i++){
+            if(hm.get(Integer.valueOf(tempnum[i])) == null){
+                temptxt2 = new StringBuilder(temptxt[i] + " ");
+                hm.put(Integer.valueOf(tempnum[i]), temptxt2);
+            } else {
+                temptxt2 = new StringBuilder(hm.get(Integer.valueOf(tempnum[i])).append(temptxt[i] + " "));
+                hm.put(Integer.valueOf(tempnum[i]), temptxt2);
+            }            
+        }
+        
+                      
+                      
+       StringBuilder done = new StringBuilder();               
+        for(int k = 0; k < hm.size(); k++){
+            done.append(hm.get(k));
+        }
+        System.out.print(done.toString());
+    
+        
+    }
+}
